@@ -1,6 +1,6 @@
 #cocktail sort
 
-def sort(s):
+def cocktail_sort(s):
     lower_bound = -1
     upper_bound = len(s) - 1
     swap = True
