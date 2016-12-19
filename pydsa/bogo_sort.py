@@ -9,30 +9,36 @@
 """
 
 import random
+import sys
+import datetime
+
+bs_range = xrange if sys.version_info[0] < 3 else range
+
+def bogo_sort(lst):
+    count = 0
+    while not is_sorted(lst):
+        random.shuffle(lst)
+        count += 1
+    return count
+
+def is_sorted(l):
+    for i in bs_range(1, len(l)):
+        if l[i] < l[i - 1]:
+            return False
+    return True
+
+def random_list(length):
+    return [random.randint(0, 10 * length) for _ in range(length)]
 
 
-def bogo_sort(seq):
-    if len(seq) == 1:
-        return seq
-    random.seed()
-    while not is_sorted(seq):
-        if len(seq) == 2:
-            i = 0
-            j = 1
-        else:
-            i = random.randint(0, len(seq) - 2)
-            j = random.randint(i, len(seq) - 1)
-        seq[i], seq[j] = seq[j], seq[i]
-    return seq
+def run_bogo_sort(length):
+    lst = random_list(length)
+    print(lst)
 
-"""
-As mentioned, this algorithm is not stable. Hence I thought it's important to define a function to check for the same
-"""
-def is_sorted(seq):
-    return all(seq[i - 1] <= seq[i] for i in xrange(1, len(seq)))
-"""
-a=[1,5,6,2,4,8]
-bogo_sort(a)
-print(a)
-"""
+    start = datetime.datetime.now()
+    iterations = bogo_sort(lst)
+    end = datetime.datetime.now()
+
+    elapsed = end - start
+return lst, iterations, elapsed
 
