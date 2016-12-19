@@ -19,4 +19,4 @@ def cocktail_sort(s):
             if s[i] < s[i - 1]:
                 s[i], s[i - 1] = s[i - 1], s[i]
                 swap = True
-     return s
+    return s
