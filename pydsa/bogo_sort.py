@@ -29,7 +29,7 @@ def bogo_sort(seq):
 As mentioned, this algorithm is not stable. Hence I thought it's important to define a function to check for the same
 """
 def is_sorted(seq):
-    return all(seq[i - 1] <= seq[i] for i in xrange(1, len(seq)))
+    return all(seq[i - 1] <= seq[i] for i in range(1, len(seq)))
 """
 a=[1,5,6,2,4,8]
 bogo_sort(a)
